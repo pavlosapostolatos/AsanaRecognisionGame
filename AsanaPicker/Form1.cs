@@ -53,6 +53,18 @@ namespace AsanaPicker;
                 };
                 int index = i;
                 imagePickBoxes[i].Click += (s, e) => ImageClicked(index);
+                // Add Paint event to draw green border when needed
+                imagePickBoxes[i].Paint += (s, e) =>
+                {
+                    if ((string)imagePickBoxes[index].Tag == currentAnswer && !isNameTheImageMode && !imagePickBoxes[index].Enabled)
+                    {
+                        ControlPaint.DrawBorder(e.Graphics, imagePickBoxes[index].ClientRectangle,
+                            Color.Green, 4, ButtonBorderStyle.Solid,
+                            Color.Green, 4, ButtonBorderStyle.Solid,
+                            Color.Green, 4, ButtonBorderStyle.Solid,
+                            Color.Green, 4, ButtonBorderStyle.Solid);
+                    }
+                };
                 this.Controls.Add(imagePickBoxes[i]);
             }
 
@@ -133,7 +145,12 @@ namespace AsanaPicker;
             answerBox.Visible = false;
             submitButton.Visible = false;
             foreach (var box in imagePickBoxes)
+            {
                 box.Visible = false;
+                box.Enabled = true;
+                box.BorderStyle = BorderStyle.FixedSingle;
+                box.Invalidate(); // Ensure border is redrawn
+            }
             Controls.Find("mainImageBox", true)[0].Visible = false;
 
             isNameTheImageMode = currentRound % 2 == 0;
@@ -162,7 +179,7 @@ namespace AsanaPicker;
             instructionLabel.Text = "Click the image that matches the name:";
             currentAnswer = imagePaths[random.Next(imagePaths.Count)];
             string answerName = Path.GetFileNameWithoutExtension(currentAnswer);
-            resultLabel.Text = $"Select: {answerName}";
+            instructionLabel.Text = $"Select: {answerName}";
 
             var selectedImages = new List<string> { currentAnswer };
             while (selectedImages.Count < 5)
@@ -178,6 +195,7 @@ namespace AsanaPicker;
                 imagePickBoxes[i].Image = Image.FromFile(selectedImages[i]);
                 imagePickBoxes[i].Visible = true;
                 imagePickBoxes[i].Tag = selectedImages[i];
+                imagePickBoxes[i].Enabled = true;
             }
         }
 
@@ -215,12 +233,15 @@ namespace AsanaPicker;
             {
                 resultLabel.ForeColor = Color.Red;
                 resultLabel.Text = $"Incorrect! The correct image is: {correctName}";
-                foreach (var box in imagePickBoxes)
-                    if ((string)box.Tag == currentAnswer)
-                        box.BorderStyle = BorderStyle.Fixed3D;
             }
 
             foreach (var box in imagePickBoxes)
-                box.Enabled = false;
+            {
+                box.Enabled = false; // Disable all images after selection
+                if ((string)box.Tag == currentAnswer)
+                {
+                    box.Invalidate(); // Trigger Paint event to draw green border
+                }
+            }
         }
     }
