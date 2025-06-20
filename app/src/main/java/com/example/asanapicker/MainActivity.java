@@ -74,20 +74,20 @@ public class MainActivity extends AppCompatActivity {
     private void loadImages() {
         AssetManager assetManager = getAssets();
         try {
-            String[] files = assetManager.list("images");
+            String[] files = assetManager.list("yoga_images");
             if (files != null) {
                 for (String file : files) {
                     if (file.endsWith(".jpg") || file.endsWith(".png")) {
-                        imagePaths.add("images/" + file);
+                        imagePaths.add("yoga_images/" + file);
                     }
                 }
             }
             if (imagePaths.size() < 5) {
-                Toast.makeText(this, "Please add at least 5 images to the assets/images folder.", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "Please add at least 5 images to the assets/yoga_images folder.", Toast.LENGTH_LONG).show();
                 finish();
             }
         } catch (IOException e) {
-            Toast.makeText(this, "Error loading images.", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Error loading yoga_images.", Toast.LENGTH_LONG).show();
             finish();
         }
     }
