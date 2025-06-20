@@ -1,7 +1,7 @@
 # Asana Recognision Game
 
 
-If you wanna know yoga instead of just doing yoga you need to know what you are doing.
+If you wanna know yoga instead of just practicing it you need to know what you are doing.
 
 This is driver's license style test, suitable even as a kid's game to sharpen your memory of the Asana Names.
 
