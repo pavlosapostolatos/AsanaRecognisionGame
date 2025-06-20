@@ -35,9 +35,8 @@
         android:background="@drawable/image_border"
         android:visibility="gone"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/instructionTextView"
-        android:layout_marginTop="30dp" />
+        android:layout_marginTop="80dp" />
 
     <ImageView
         android:id="@+id/pickImageView2"
@@ -46,10 +45,9 @@
         android:scaleType="fitCenter"
         android:background="@drawable/image_border"
         android:visibility="gone"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/pickImageView1"
-        android:layout_marginTop="16dp" />
+        app:layout_constraintStart_toEndOf="@id/pickImageView1"
+        app:layout_constraintTop_toTopOf="@id/pickImageView1"
+        android:layout_marginStart="16dp" />
 
     <ImageView
         android:id="@+id/pickImageView3"
@@ -58,10 +56,9 @@
         android:scaleType="fitCenter"
         android:background="@drawable/image_border"
         android:visibility="gone"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/pickImageView2"
-        android:layout_marginTop="16dp" />
+        app:layout_constraintStart_toEndOf="@id/pickImageView2"
+        app:layout_constraintTop_toTopOf="@id/pickImageView1"
+        android:layout_marginStart="16dp" />
 
     <ImageView
         android:id="@+id/pickImageView4"
@@ -70,10 +67,9 @@
         android:scaleType="fitCenter"
         android:background="@drawable/image_border"
         android:visibility="gone"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/pickImageView3"
-        android:layout_marginTop="16dp" />
+        app:layout_constraintStart_toEndOf="@id/pickImageView3"
+        app:layout_constraintTop_toTopOf="@id/pickImageView1"
+        android:layout_marginStart="16dp" />
 
     <ImageView
         android:id="@+id/pickImageView5"
@@ -82,10 +78,9 @@
         android:scaleType="fitCenter"
         android:background="@drawable/image_border"
         android:visibility="gone"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/pickImageView4"
-        android:layout_marginTop="16dp" />
+        app:layout_constraintStart_toEndOf="@id/pickImageView4"
+        app:layout_constraintTop_toTopOf="@id/pickImageView1"
+        android:layout_marginStart="16dp" />
 
     <EditText
         android:id="@+id/answerEditText"
@@ -127,6 +122,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginBottom="80dp" />
+        android:layout_marginBottom="20dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
